@@ -3,7 +3,7 @@ Using jQuery.timer Library
 
 ```javascript
         $.timer(1000, function (timer) {
-                console.log(Hello World!');
+                console.log('Hello World!');
            },'timeout');
 ```
 
@@ -11,7 +11,7 @@ Using jQuery.timer Library
 
 ```javascript
          $.timer(1000, function (timer) {
-                console.log(Hello World!');
+                console.log('Hello World!');
            });
 ```
 e.g
