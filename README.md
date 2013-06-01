@@ -18,7 +18,7 @@ e.g
 
 ```javascript
 $.timer(1000, function (timer) {
-     console.log(Hello World!');
+     console.log('Hello World!');
      timer.stop();
    },'interval');
 ```
