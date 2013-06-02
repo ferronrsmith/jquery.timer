@@ -7,7 +7,7 @@
 describe('Testing Jquery.Timer library', function () {
     var timerCallback;
 
-    beforeEach(function() {
+    beforeEach(function () {
         timerCallback = jasmine.createSpy('timerCallback');
         jasmine.Clock.useMock();
     });
@@ -18,7 +18,7 @@ describe('Testing Jquery.Timer library', function () {
         $.timer(3000, function (timer) {
             timerCallback();
             timer.stop();
-        },'timeout');
+        }, 'timeout');
 
         expect(timerCallback).not.toHaveBeenCalled();
 
@@ -28,12 +28,12 @@ describe('Testing Jquery.Timer library', function () {
 
     });
 
-    it("Timer Interval Test", function() {
+    it("Timer Interval Test", function () {
 
         $.timer(100, function (timer) {
             timerCallback();
             timer.stop();
-        },'interval');
+        }, 'interval');
 
         expect(timerCallback).not.toHaveBeenCalled();
 
@@ -45,6 +45,22 @@ describe('Testing Jquery.Timer library', function () {
 
         jasmine.Clock.tick(50);
         expect(timerCallback.callCount).toEqual(2);
+    });
+
+    it('Timer Interval Test - More Complex', function () {
+        var second = false;
+        $.timer(1000, function (timer) {
+                timerCallback(second);
+        }, 'interval');
+
+        expect(timerCallback).not.toHaveBeenCalled();
+
+        jasmine.Clock.tick(1001);
+
+        expect(timerCallback).toHaveBeenCalled();
+
+        expect(timerCallback).toHaveBeenCalledWith(false);
+
     });
 
 });
